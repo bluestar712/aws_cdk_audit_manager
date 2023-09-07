@@ -152,26 +152,26 @@ export class AuditManagerStack extends cdk.Stack {
         */
 
 
-        // Enable configuration Recorder on AWS config
-        new awsconfig.CfnConfigurationRecorder(this, 'MyConfigRecorder', {
-            roleArn: iamRole.roleArn,
-            recordingGroup: {
-                allSupported: true,
-                includeGlobalResourceTypes: true,
-            },
-        });
+        // // Enable configuration Recorder on AWS config
+        // new awsconfig.CfnConfigurationRecorder(this, 'MyConfigRecorder', {
+        //     roleArn: iamRole.roleArn,
+        //     recordingGroup: {
+        //         allSupported: true,
+        //         includeGlobalResourceTypes: true,
+        //     },
+        // });
 
-        // // new awsconfig.CfnDeliveryChannel(this, 'MyConfigAggregator', {
-        // //     s3BucketName: s3Bucket.bucketName
-        // // });
+        // // // new awsconfig.CfnDeliveryChannel(this, 'MyConfigAggregator', {
+        // // //     s3BucketName: s3Bucket.bucketName
+        // // // });
 
-        // Configure Conformance pack 
-        new awsconfig.CfnConformancePack(this, 'MyCfnConformancePack', {
-            conformancePackName: 'conformancePackName',
-            deliveryS3Bucket: s3Bucket.bucketName,
-            deliveryS3KeyPrefix: s3_prefix,
-            templateS3Uri: `s3://${s3Bucket.bucketName}/${s3_prefix}/${fileName}`
-        });
+        // // Configure Conformance pack 
+        // new awsconfig.CfnConformancePack(this, 'MyCfnConformancePack', {
+        //     conformancePackName: 'conformancePackName',
+        //     deliveryS3Bucket: s3Bucket.bucketName,
+        //     deliveryS3KeyPrefix: s3_prefix,
+        //     templateS3Uri: `s3://${s3Bucket.bucketName}/${s3_prefix}/${fileName}`
+        // });
 
     }
 }
