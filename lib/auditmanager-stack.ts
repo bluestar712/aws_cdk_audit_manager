@@ -79,7 +79,7 @@ export class AuditManagerStack extends cdk.Stack {
 
         // Attach necessary permissions policies to the IAM role
         auditManagerRole.addToPolicy(new iam.PolicyStatement({
-            actions: ['s3:PutObject', 's3:GetObject'], 
+            actions: ['s3:PutObject', 's3:GetObject'],
             resources: [s3Bucket.bucketArn + '/*'],
         }));
 
@@ -122,9 +122,9 @@ export class AuditManagerStack extends cdk.Stack {
             'config:Put*',
             'config:Deliver*',
             'config:Get*',
-            
+
         );
-        configPolicy.addResources('*'); 
+        configPolicy.addResources('*');
 
         iamRole.addToPolicy(configPolicy);
 
@@ -142,6 +142,14 @@ export class AuditManagerStack extends cdk.Stack {
             destinationBucket: s3Bucket,
             destinationKeyPrefix: s3_prefix
         });
+
+
+        /*
+            The below code are some problematic section of code. 
+            It appears to be causing issues during deployment. 
+            When attempting to deploy this code, the deployment process either 
+            becomes unresponsive (freezes) or results in a failure.
+        */
 
 
         // Enable configuration Recorder on AWS config
