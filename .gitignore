@@ -3,6 +3,10 @@
 *.d.ts
 node_modules
 
+# Except for specific JavaScript files you want to include
+!jest.config.js
+!index.js
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
